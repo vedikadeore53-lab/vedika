@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>My Personal Website</h1>
+
+        <nav>
+            <button class="active-btn" onclick="showTab('about', this)">About</button>
+            <button onclick="showTab('education', this)">Educational Details</button>
+            <button onclick="showTab('feedback', this)">Feedback</button>
+            <button onclick="showTab('contact', this)">Contact</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="about" class="tab-content active">
+
+            <h2>About Me</h2>
+
+            <div class="profile">
+                <img src="photo.jpeg" alt="My Photo">
+            </div>
+
+            <div class="intro">
+                <h2>My Introduction</h2>
+
+                <p><b>Name:</b> Shrawani Harichandra Khose</p>
+                <p><b>Age:</b> 17</p>
+                <p><b>Date of Birth:</b> 22/03/2009</p>
+                <p><b>Address:</b> At: Lanjeshwar, Tal: Bhoom, Dis: Dharashiv</p>
+                <p><b>Religion & Community:</b> Hindu – Maratha</p>
+                <p><b>Language:</b> Marathi</p>
+                <p><b>Technical Skill:</b> C Programming, C++, Basic Python</p>
+                <p>
+                    <b>Hobbies:</b>
+                    Listening to music, learning new things,
+                    travelling and spending time with friends.
+                </p>
+                <p>
+                    <b>How I feel when I use this website:</b>
+                    I feel happy and excited because this website
+                    represents my learning, creativity and interest
+                    in web development.
+                </p>
+
+                <blockquote class="my-quote">
+                    “I value my individuality, find peace in my own company, and believe in standing strong without depending on others for my happiness.”
+                </blockquote>
+            </div>
+
+            <div class="certificates">
+                <h2>My Certificate</h2>
+                <p><b>Certificate of Completion</b></p>
+                <a href="certificate.pdf" target="_blank" class="certificate-btn">
+                    View Certificate
+                </a>
+            </div>
+
+        </section>
+
+        <section id="education" class="tab-content">
+
+            <h2>Educational Details</h2>
+
+            <div class="card college-details">
+                <h3>College Details</h3>
+                <p><b>College Name:</b> VJTI College Mumbai</p>
+                <p><b>College Address:</b> H. R. Mahajani Marg, Matunga East, Mumbai, Maharashtra 400019, India</p>
+                <p><b>Course:</b> Diploma in Electronics Engineering</p>
+                <p><b>Current Year:</b> Second Year</p>
+                <p><b>Career Development:</b> Skills are currently developing</p>
+                <p><b>Certification:</b> C++</p>
+            </div>
+
+            <div class="card school-details">
+                <h3>School Details</h3>
+                <p><b>School Name:</b> Atma Malik Special Integrated Military Pattern School Kokamthan</p>
+                <p><b>School Address:</b> Vishwatmak Jangli Maharaj Ashram Trust, Shirdi-Kopargaon Road, Post Jeur Kumbhari, Taluka Kopargaon, District Ahmednagar, Kokamthan, Maharashtra, 423601.</p>
+                <p><b>Hostelite:</b> 4th–10th Standard</p>
+                <p><b>School Life:</b> Residential education with structured military training.</p>
+                <p><b>10th Percentage:</b> 88.00%</p>
+                <p><b>NCC Candidate:</b> Gold Medalist in Parade</p>
+                <p><b>NCC Grade:</b> Passed with A+ Grade</p>
+                <p>
+                    <b>Background & Experience:</b> During my secondary school years, I lived in a residential hostel and underwent military-oriented training, which developed my discipline, confidence, teamwork, and leadership skills.
+                </p>
+            </div>
+
+            <div class="certificates">
+                <h3>Educational Certificate</h3>
+                <p><b>NCC Certificate</b></p>
+                <a href="NCC_Certificate.jpeg" target="_blank" class="certificate-btn">
+                    View NCC Certificate
+                </a>
+            </div>
+
+        </section>
+
+        <section id="feedback" class="tab-content">
+
+            <div class="feedback-box">
+                <h2>Feedback</h2>
+                <p>I would love to know what you think about my website. Please give your valuable feedback below.</p>
+
+                <form action="https://formspree.io/f/xgawokrj" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feedback-msg">Your Feedback:</label>
+                        <textarea id="feedback-msg" name="feedback" placeholder="Write your feedback here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Feedback</button>
+                </form>
+            </div>
+
+        </section>
+
+        <section id="contact" class="tab-content">
+
+            <h2>Contact Me</h2>
+
+            <div class="contact-box">
+                <p><b>Name:</b> Shrawani Khose</p>
+                <p><b>Course:</b> Diploma in Electronics, Second Year</p>
+                <p><b>Contact:</b> 9322043940</p>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 My Personal Website</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
