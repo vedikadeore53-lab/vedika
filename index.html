@@ -1,157 +1,459 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vedika | My Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #fdf2f8);
+    color: #252344;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(120deg, #4338ca, #9333ea, #ec4899);
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 15px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 15px 10px;
+    background: white;
+    box-shadow: 0 4px 15px #00000010;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    background: #f1f0ff;
+    color: #4338ca;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav button:hover,
+nav button.active {
+    background: linear-gradient(120deg, #4f46e5, #9333ea);
+    color: white;
+}
+
+.container {
+    max-width: 950px;
+    margin: 30px auto;
+    padding: 0 16px;
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 35px #4338ca15;
+    animation: appear 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes appear {
+    from {opacity: 0; transform: translateY(8px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h2 {
+    color: #6d28d9;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #4338ca;
+    margin: 15px 0 8px;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.profile img {
+    width: 210px;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    border: 5px solid #e9d5ff;
+    box-shadow: 0 8px 20px #9333ea20;
+}
+
+.profile-info {
+    flex: 1;
+    min-width: 220px;
+}
+
+.tag {
+    display: inline-block;
+    background: #f3e8ff;
+    color: #7e22ce;
+    padding: 7px 12px;
+    border-radius: 20px;
+    margin: 12px 4px 0 0;
+    font-size: 13px;
+}
+
+.card {
+    background: #faf9ff;
+    border: 1px solid #e9d5ff;
+    border-left: 5px solid #8b5cf6;
+    padding: 18px;
+    border-radius: 12px;
+    margin: 14px 0;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-weight: 600;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d6d3e8;
+    border-radius: 9px;
+    font: inherit;
+    outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px #8b5cf620;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    background: linear-gradient(120deg, #4f46e5, #9333ea);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 9px;
+    margin-top: 18px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.submit-btn:hover {
+    opacity: 0.85;
+}
+
+footer {
+    text-align: center;
+    padding: 22px;
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+    header h1 { font-size: 25px; }
+    nav { gap: 6px; }
+    nav button { padding: 10px 13px; font-size: 13px; }
+    .container { margin: 18px auto; }
+    .tab-content { padding: 20px; }
+    .profile { justify-content: center; }
+    .profile img { width: 190px; height: 220px; }
+    .profile-info { text-align: center; }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>My Personal Website</h1>
+<header>
+    <h1>Welcome to My Portfolio ✨</h1>
+    <p>Learn About Me, My Education & My Journey</p>
+</header>
 
-        <nav>
-            <button class="active-btn" onclick="showTab('about', this)">About</button>
-            <button onclick="showTab('education', this)">Educational Details</button>
-            <button onclick="showTab('feedback', this)">Feedback</button>
-            <button onclick="showTab('contact', this)">Contact</button>
-        </nav>
-    </header>
+<nav>
+    <button class="active" onclick="showTab('intro', this)">
+        Introduction
+    </button>
 
-    <main class="container">
-        <section id="about" class="tab-content active">
+    <button onclick="showTab('education', this)">
+        Education
+    </button>
 
-            <h2>About Me</h2>
+    <button onclick="showTab('feedback', this)">
+        Feedback
+    </button>
 
-            <div class="profile">
-                <img src="photo.jpeg" alt="My Photo">
-            </div>
+    <button onclick="showTab('contact', this)">
+        Contact
+    </button>
+</nav>
 
-            <div class="intro">
-                <h2>My Introduction</h2>
+<div class="container">
 
-                <p><b>Name:</b> Shrawani Harichandra Khose</p>
-                <p><b>Age:</b> 17</p>
-                <p><b>Date of Birth:</b> 22/03/2009</p>
-                <p><b>Address:</b> At: Lanjeshwar, Tal: Bhoom, Dis: Dharashiv</p>
-                <p><b>Religion & Community:</b> Hindu – Maratha</p>
-                <p><b>Language:</b> Marathi</p>
-                <p><b>Technical Skill:</b> C Programming, C++, Basic Python</p>
+    <!-- TAB 1: INTRODUCTION -->
+    <section id="intro" class="tab-content active">
+        <h2>👋 Introduction</h2>
+
+        <div class="profile">
+            <img src="PHOTO.jpeg"
+                 alt="Photo of Vedika Deore">
+
+            <div class="profile-info">
+                <h3>Hello, I'm Vedika Prashant Deore!</h3>
+
                 <p>
-                    <b>Hobbies:</b>
-                    Listening to music, learning new things,
-                    travelling and spending time with friends.
+                    I am a second-year Diploma in Electronics
+                    student at VJTI, Mumbai.
                 </p>
+
                 <p>
-                    <b>How I feel when I use this website:</b>
-                    I feel happy and excited because this website
-                    represents my learning, creativity and interest
-                    in web development.
+                    I am eager to learn new technologies,
+                    improve my technical skills and work on
+                    real-world projects.
                 </p>
 
-                <blockquote class="my-quote">
-                    “I value my individuality, find peace in my own company, and believe in standing strong without depending on others for my happiness.”
-                </blockquote>
+                <span class="tag">Electronics</span>
+                <span class="tag">Embedded Systems</span>
+                <span class="tag">PCB Design</span>
+                <span class="tag">C Programming</span>
             </div>
+        </div>
 
-            <div class="certificates">
-                <h2>My Certificate</h2>
-                <p><b>Certificate of Completion</b></p>
-                <a href="certificate.pdf" target="_blank" class="certificate-btn">
-                    View Certificate
-                </a>
-            </div>
+        <div class="card">
+            <h3>About Me</h3>
+            <p>
+                I am a motivated student interested in
+                electronics, programming and innovation.
+                My goal is to gain practical knowledge,
+                explore new ideas and grow as a skilled
+                electronics professional.
+            </p>
+        </div>
+    </section>
 
-        </section>
+    <!-- TAB 2: EDUCATIONAL DETAILS -->
+    <section id="education" class="tab-content">
+        <h2>🎓 Educational Details</h2>
 
-        <section id="education" class="tab-content">
+        <div class="card">
+            <h3>Diploma in Electronics</h3>
+            <p><strong>Institute:</strong> VJTI, Mumbai</p>
+            <p><strong>Year:</strong> Second Year</p>
+            <p><strong>Field:</strong> Electronics Engineering</p>
+        </div>
 
-            <h2>Educational Details</h2>
+        <div class="card">
+            <h3>School Education</h3>
+            <p><strong>Qualification:</strong> SSC and HSC/ 10th and 12th</p>
+            <p><strong>School Name:</strong> K.B.H.High school,Virgaon</p>
+            <p><strong>Percentage:</strong> 10TH-94.60% AND 12TH-85.90%</p>
+        </div>
 
-            <div class="card college-details">
-                <h3>College Details</h3>
-                <p><b>College Name:</b> VJTI College Mumbai</p>
-                <p><b>College Address:</b> H. R. Mahajani Marg, Matunga East, Mumbai, Maharashtra 400019, India</p>
-                <p><b>Course:</b> Diploma in Electronics Engineering</p>
-                <p><b>Current Year:</b> Second Year</p>
-                <p><b>Career Development:</b> Skills are currently developing</p>
-                <p><b>Certification:</b> C++</p>
-            </div>
+        <div class="card">
+            <h3>Technical Skills</h3>
+            <p>• C Programming</p>
+            <p>• Basic Electronics</p>
+            <p>• Embedded Systems</p>
+            <p>• PCB Design</p>
+            <p>• Digital Electronics</p>
+        </div>
 
-            <div class="card school-details">
-                <h3>School Details</h3>
-                <p><b>School Name:</b> Atma Malik Special Integrated Military Pattern School Kokamthan</p>
-                <p><b>School Address:</b> Vishwatmak Jangli Maharaj Ashram Trust, Shirdi-Kopargaon Road, Post Jeur Kumbhari, Taluka Kopargaon, District Ahmednagar, Kokamthan, Maharashtra, 423601.</p>
-                <p><b>Hostelite:</b> 4th–10th Standard</p>
-                <p><b>School Life:</b> Residential education with structured military training.</p>
-                <p><b>10th Percentage:</b> 88.00%</p>
-                <p><b>NCC Candidate:</b> Gold Medalist in Parade</p>
-                <p><b>NCC Grade:</b> Passed with A+ Grade</p>
-                <p>
-                    <b>Background & Experience:</b> During my secondary school years, I lived in a residential hostel and underwent military-oriented training, which developed my discipline, confidence, teamwork, and leadership skills.
-                </p>
-            </div>
+        <div class="card">
+            <h3>My Career Goal</h3>
+            <p>
+                To strengthen my technical knowledge,
+                develop innovative projects and build
+                a successful career in electronics.
+            </p>
+        </div>
+    </section>
 
-            <div class="certificates">
-                <h3>Educational Certificate</h3>
-                <p><b>NCC Certificate</b></p>
-                <a href="NCC_Certificate.jpeg" target="_blank" class="certificate-btn">
-                    View NCC Certificate
-                </a>
-            </div>
+    <!-- TAB 3: FEEDBACK -->
+    <section id="feedback" class="tab-content">
+        <h2>💬 Feedback</h2>
 
-        </section>
+        <p>
+            Thank you for visiting my portfolio!
+            Please share your feedback below.
+        </p>
 
-        <section id="feedback" class="tab-content">
+        <form id="feedbackForm">
+            <label for="visitorName">Your Name</label>
+            <input type="text" id="visitorName"
+                   placeholder="Enter your name" required>
 
-            <div class="feedback-box">
-                <h2>Feedback</h2>
-                <p>I would love to know what you think about my website. Please give your valuable feedback below.</p>
+            <label for="rating">Rate My Website</label>
+            <select id="rating" required>
+                <option value="">Select a rating</option>
+                <option value="5">★★★★★ - Excellent</option>
+                <option value="4">★★★★ - Very Good</option>
+                <option value="3">★★★ - Good</option>
+                <option value="2">★★ - Average</option>
+                <option value="1">★ - Needs Improvement</option>
+            </select>
 
-                <form action="https://formspree.io/f/xgawokrj" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    </div>
+            <label for="feedbackMessage">Your Feedback</label>
+            <textarea id="feedbackMessage"
+                      placeholder="Write your feedback here..."
+                      required></textarea>
 
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                    </div>
+            <button class="submit-btn" type="submit">
+                Submit Feedback
+            </button>
+        </form>
 
-                    <div class="form-group">
-                        <label for="feedback-msg">Your Feedback:</label>
-                        <textarea id="feedback-msg" name="feedback" placeholder="Write your feedback here..." required></textarea>
-                    </div>
+        <p id="feedbackResult" aria-live="polite"></p>
+    </section>
 
-                    <button type="submit" class="submit-btn">Submit Feedback</button>
-                </form>
-            </div>
+    <!-- TAB 4: CONTACT -->
+    <section id="contact" class="tab-content">
+        <h2>📩 Contact Me</h2>
 
-        </section>
+        <p>
+            Feel free to contact me for academic projects,
+            collaboration and learning opportunities.
+        </p>
 
-        <section id="contact" class="tab-content">
+        <div class="card">
+            <h3>My Details</h3>
+            <p><strong>Name:</strong> Vedika Prashant Deore</p>
+            <p><strong>College:</strong> VJTI, Mumbai</p>
+            <p><strong>Course:</strong> Diploma in Electronics</p>
+            <p><strong>Email:</strong> vedikadeore53@gmail.com</p>
+            <p><strong>Phone:</strong> 9322577727</p>
+        </div>
 
-            <h2>Contact Me</h2>
+        <h3>Send Me a Message</h3>
 
-            <div class="contact-box">
-                <p><b>Name:</b> Shrawani Khose</p>
-                <p><b>Course:</b> Diploma in Electronics, Second Year</p>
-                <p><b>Contact:</b> 9322043940</p>
-            </div>
+        <form id="contactForm">
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName"
+                   placeholder="Enter your name" required>
 
-        </section>
-    </main>
+            <label for="contactEmail">Your Email</label>
+            <input type="email" id="contactEmail"
+                   placeholder="Enter your email" required>
 
-    <footer>
-        <p>© 2026 My Personal Website</p>
-    </footer>
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage"
+                      placeholder="Write your message..."
+                      required></textarea>
 
-    <script src="script.js"></script>
+            <button class="submit-btn" type="submit">
+                Send Message
+            </button>
+        </form>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Vedika Prashant Deore | Personal Portfolio</p>
+    <p>Designed with ❤️ and creativity</p>
+</footer>
+
+<script>
+function showTab(tabId, clickedButton) {
+    // Hide all sections
+    document.querySelectorAll('.tab-content').forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+
+    // Remove active style from all buttons
+    document.querySelectorAll('nav button').forEach(function(button) {
+        button.classList.remove('active');
+    });
+
+    // Show the selected section
+    document.getElementById(tabId).classList.add('active');
+
+    // Highlight selected button
+    clickedButton.classList.add('active');
+
+    // Scroll to top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Demo feedback form
+document.getElementById('feedbackForm').addEventListener('submit',
+function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('visitorName').value;
+
+    document.getElementById('feedbackResult').textContent =
+        'Thank you, ' + name + '! Your feedback was entered successfully.';
+
+    this.reset();
+});
+
+// Contact form opens the visitor's email application
+document.getElementById('contactForm').addEventListener('submit',
+function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+
+    const recipient = 'your-email@example.com'; // Replace this email
+    const subject = encodeURIComponent('Portfolio Contact Message');
+    const body = encodeURIComponent(
+        'Name: ' + name +
+        '\nEmail: ' + email +
+        '\nMessage: ' + message
+    );
+
+    window.location.href =
+        'mailto:' + recipient +
+        '?subject=' + subject +
+        '&body=' + body;
+});
+</script>
 
 </body>
-
 </html>
